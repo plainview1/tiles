@@ -22,6 +22,7 @@ h1,h2,h3,h4 {
 h1 {
 	font-family: 'Permanent Marker';
 	font-size: 50px;
+	color: #f79744;
 }
 
 h3 {
@@ -41,7 +42,7 @@ h3 {
 .tile {
 	display: inline-block;
 	margin-right: .5%;
-	margin-bottom: .5%;
+	margin-bottom: 1%;
 	width: 24%;
 	height: 250px;
 	background: url("http://placehold.it/250?text=pick me!");
@@ -49,15 +50,35 @@ h3 {
 	background-repeat: no-repeat;
 }
 
+
 .tile img {
 	opacity: 0;
 }
 
 .active img {
 	opacity: 1;
-	transition: 0.5s;
 }
 
 .tile:hover {
 	cursor: pointer;
+}
+
+/* Hexagon 
+=====================*/
+
+.clip-svg {
+		width: 0;
+		height: 0;
+}
+
+.polygon-clip-hexagon {
+	-webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+	clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+	-webkit-clip-path: url("#polygon-clip-hexagon");
+	clip-path: url("#polygon-clip-hexagon");
+} 
+
+.even {
+	margin-top: -60px;
+	margin-bottom: -60px;
 }
