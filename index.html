@@ -94,36 +94,50 @@
 		var firstSrc;
 		var nextSrc;
 
-		$('.tile').click(function(){
+		// Remove image dragging - so user won`t drag image
+		$('.tile').children('img').attr("ondragstart", "return false");
+
+		// Click handler
+		$('.tile').click(function clicked(){
 			
 			count++;			
 
 			if ( count === 1 ) {
+				$(this).addClass('active').off('click', clicked);
+				
+				// First object to manipulate(removeClass if wrong choose)
 				firstClicked = $(this);
-				$(this).addClass('active');
+				// First image to compare width next one
 				firstSrc = $(this).children('img').attr('src');
 
 			} else {
+				
 				$(this).addClass('active');
+				
+				// Second image to compare
 				nextSrc = $(this).children('img').attr('src');
 
 				if ( firstSrc === nextSrc ) {
-				alert('Good job!');
-				firstClicked = 0;
-				nextSrc = 0;
-				count = 0;
+					alert('Good job!');
+
+					// Next round
+					firstClicked = 0;
+					nextSrc = 0;
+					count = 0;
+
 				} else {
 					$(this).addClass('active');
 					alert('Try again!');
 					$(this).removeClass('active');
-					firstClicked.removeClass('active');
+					firstClicked.removeClass('active').on('click', clicked);
+
+					// Next round
 					count = 0;
 					firstClicked = 0;
 					nextSrc = 0;
+
 				}
 			}
-
-			
 		});
 
 		
